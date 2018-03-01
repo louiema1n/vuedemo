@@ -1,27 +1,10 @@
 <template>
-  <div class="layout">
-    <Layout>
-      <!-- 面包屑 -->
-      <!-- 路由匹配到的组件将渲染在这里 -->
-      <!--<router-link to="/breadcrumb" tag="li">-->
-        <!--<Icon type="ios-navigate"></Icon> 用户表-->
-      <!--</router-link>-->
-      <router-view></router-view>
-      <!--<Breadcrumb :style="{margin: '12px 0'}">-->
-        <!--<BreadcrumbItem >表格</BreadcrumbItem>-->
-        <!--<BreadcrumbItem to="/table">用户表</BreadcrumbItem>-->
-      <!--</Breadcrumb>-->
-
-      <Content :style="{background: '#fff', minHeight: '70vh', padding: '10px'}">
-        <ButtonGroup :style="{padding: '0 0 5px 0'}">
-          <Button @click="handleSelectAll(true)" type="primary" icon="plus"></Button>
-          <Button @click="handleSelectAll(false)" type="warning" icon="edit"></Button>
-          <Button @click="del" type="error" icon="trash-b"></Button>
-        </ButtonGroup>
-        <Table border :columns="columns" :data="data" ref="tab" @on-row-click="handleSelectRow"></Table>
-      </Content>
-    </Layout>
-  </div>
+  <ButtonGroup :style="{padding: '0 0 5px 0'}">
+    <Button @click="handleSelectAll(true)" type="primary" icon="plus"></Button>
+    <Button @click="handleSelectAll(false)" type="warning" icon="edit"></Button>
+    <Button @click="del" type="error" icon="trash-b"></Button>
+  </ButtonGroup>
+  <!--<Table border :columns="columns" :data="data" ref="tab" @on-row-click="handleSelectRow"></Table>-->
 </template>
 <script>
   export default {
@@ -32,7 +15,6 @@
       }
     },
     mounted(){
-      this.$router.push({path: '/breadcrumb/表格/用户表'});
     },
     created() {
       this.$http.get('/tab/all').then(response => {
