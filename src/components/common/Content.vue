@@ -4,7 +4,7 @@
       <Breadcrumb :style="{margin: '12px 0'}">
         <!--<BreadcrumbItem to="/">Home</BreadcrumbItem>-->
         <BreadcrumbItem to="/">主页</BreadcrumbItem>
-        <BreadcrumbItem v-for="(path, index) in breadcrumbItems">{{path}}</BreadcrumbItem>
+        <BreadcrumbItem v-for="(path, index) in breadcrumbItems" :key="path">{{path}}</BreadcrumbItem>
       </Breadcrumb>
       <Content :style="{background: '#fff', minHeight: '70vh', padding: '10px'}">
       <!-- 表格 -->

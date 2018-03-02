@@ -6,7 +6,7 @@
     <FormItem label="年龄" prop="age">
       <Input v-model="userFrom.age"></Input>
     </FormItem>
-    <FormItem label="地址">
+    <FormItem label="地址" prop="address">
       <Select v-model="userFrom.address">
         <Option value="beijing">New York</Option>
         <Option value="shanghai">London</Option>
@@ -14,12 +14,14 @@
       </Select>
     </FormItem>
     <FormItem>
-      <Button type="primary" @click="handleSubmit('userFrom')">Submit</Button>
+      <Button type="primary" @click="submitForm()">Submit</Button>
       <Button type="ghost" @click="clearForm('userFrom')" style="margin-left: 8px">Reset</Button>
     </FormItem>
+    <tableOpr ref="tableOprUtil"></tableOpr>
   </Form>
 </template>
 <script>
+  import tableOpr from '../utils/TableOpr';
   export default {
     data () {
       return {
@@ -30,9 +32,13 @@
         },
       }
     },
+    components: {
+      tableOpr: tableOpr
+    },
     methods: {
-      handleSubmit (name) {
-        alert(this.$refs[name].serialize())
+      submitForm () {
+        // alert(JSON.stringify(this.userFrom));
+        this.$refs.tableOprUtil.submitData(this.userFrom, '/user/add');
       },
       clearForm (name) {
         this.$refs[name].resetFields();

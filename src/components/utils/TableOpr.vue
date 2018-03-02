@@ -27,8 +27,21 @@
         } else {
           this.$Message.error('请选择需要删除的行。');
         }
-      }
-    },
+      },
+      /**
+       * @description 提交数据
+       * @author louiemain
+       * @date Created on 2018/3/2 22:27
+       * @param data 需要提交的数据
+       * @param url 提交的地址
+       * @return
+       */
+      submitData(data, url) {
+        alert(JSON.stringify(data));
+        this.$http.post(url, data).then(response => {
 
+        })
+      },
+    },
   };
 </script>
