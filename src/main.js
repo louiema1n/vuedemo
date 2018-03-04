@@ -21,7 +21,7 @@ Vue.config.productionTip = false;
 axios.defaults.baseURL = "http://localhost:8081/";
 // 给axios绑定给vue成为一个属性
 Vue.prototype.$http = axios;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 /* eslint-disable no-new */
 new Vue({

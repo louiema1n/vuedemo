@@ -3,9 +3,8 @@
     <Layout>
       <router-view></router-view>
         <ButtonGroup :style="{padding: '0 0 5px 0'}">
-          <router-link to="/add/user" tag="Button" >新增</router-link>
-          <Button @click="handleSelectAll(true)" type="primary" icon="plus"></Button>
-          <Button @click="handleSelectAll(false)" type="warning" icon="edit"></Button>
+          <Button @click="add" type="primary" icon="plus"></Button>
+          <Button @click="upd" type="warning" icon="edit"></Button>
           <Button @click="del" type="error" icon="trash-b"></Button>
         </ButtonGroup>
         <Table border :columns="columns" :data="data" ref="tab" @on-row-click="handleSelectRow">
@@ -61,11 +60,22 @@
       'tableOpr': TableOpr
     },
     methods: {
+      add() {
+        // 跳转至新增界面
+        this.$router.push('/user/add');
+      },
       del() {
         // 获取选择的行数据
         let selectionData = this.$refs.tab.getSelection();
         // 删除数据
         this.$refs.tableOprUtil.deleteSelection(this.data, selectionData, '/user/del/');
+      },
+      upd() {
+        // 获取选择的行数据
+        let selectionData = this.$refs.tab.getSelection();
+        // 修改数据
+        this.$router.push({name: 'updUser', params: selectionData[0]});
+        // this.$refs.tableOprUtil.deleteSelection(this.data, selectionData, '/user/del/');
       },
       handleSelectRow(row, index) {
         // 设置选中行

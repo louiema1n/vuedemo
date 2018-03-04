@@ -14,8 +14,9 @@
       </Select>
     </FormItem>
     <FormItem>
-      <Button type="primary" @click="submitForm()">Submit</Button>
-      <Button type="ghost" @click="clearForm('userFrom')" style="margin-left: 8px">Reset</Button>
+      <Button type="primary" @click="submitForm()">提交</Button>
+      <Button type="ghost" @click="clearForm('userFrom')">重置</Button>
+      <router-link to="/tab/user" tag="Button" style="margin-left: 8px">取消</router-link>
     </FormItem>
     <tableOpr ref="tableOprUtil"></tableOpr>
   </Form>
@@ -25,11 +26,12 @@
   export default {
     data () {
       return {
-        userFrom: {
-          name: '',
-          age: '',
-          address: ''
-        },
+        // userFrom: {
+        //   name: '',
+        //   age: '',
+        //   address: ''
+        // },
+        userFrom: this.$route.params,
       }
     },
     components: {

@@ -30,9 +30,10 @@ const routes = [
       }
     ]
   },
-  { path: '/add', component: Content,
+  { path: '/user', component: Content,
     children:[
-      { path: 'user', component: userAdd},
+      { path: 'add', component: userAdd},
+      { path: 'upd', name: 'updUser', component: userAdd},
       // { path: 'item', component: itemTable},
       ]
   }

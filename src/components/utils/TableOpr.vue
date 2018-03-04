@@ -37,9 +37,9 @@
        * @return
        */
       submitData(data, url) {
-        alert(JSON.stringify(data));
         this.$http.post(url, data).then(response => {
-
+          this.$Message.info(response.data);
+          this.$router.push('/tab/user');
         })
       },
     },
