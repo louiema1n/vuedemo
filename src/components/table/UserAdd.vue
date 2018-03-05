@@ -1,10 +1,12 @@
 <template>
-  <Form ref="userFrom" :model="userFrom" :label-width="80" action="/zzz">
+  <Form ref="userFrom" :model="userFrom" :label-width="80">
+    <Input v-model="userFrom.id" :style="{display: 'none'}"/>
+    <div :style="{marginBottom: '12px'}"></div>
     <FormItem label="姓名" prop="name">
-      <Input v-model="userFrom.name"></Input>
+      <Input v-model="userFrom.name" autofocus/>
     </FormItem>
     <FormItem label="年龄" prop="age">
-      <Input v-model="userFrom.age"></Input>
+      <Input v-model="userFrom.age"/>
     </FormItem>
     <FormItem label="地址" prop="address">
       <Select v-model="userFrom.address">
@@ -26,12 +28,12 @@
   export default {
     data () {
       return {
-        // userFrom: {
-        //   name: '',
-        //   age: '',
-        //   address: ''
-        // },
-        userFrom: this.$route.params,
+        userFrom: this.$route.params.id == null ? {
+          id: '',
+          name: '',
+          age: '',
+          address: ''
+        } : this.$route.params,
       }
     },
     components: {
@@ -39,8 +41,13 @@
     },
     methods: {
       submitForm () {
-        // alert(JSON.stringify(this.userFrom));
-        this.$refs.tableOprUtil.submitData(this.userFrom, '/user/add');
+        if (this.$route.params.id == null) {
+          // 新增
+          this.$refs.tableOprUtil.submitData(this.userFrom, '/user/add');
+        } else {
+          // 修改
+          this.$refs.tableOprUtil.submitData(this.userFrom, '/user/upd');
+        }
       },
       clearForm (name) {
         this.$refs[name].resetFields();

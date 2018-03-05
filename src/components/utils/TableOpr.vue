@@ -42,6 +42,30 @@
           this.$router.push('/tab/user');
         })
       },
+
+      /**
+       * @Description: 初始化搜索框数据
+       * @Author: louiemain
+       * @Date: 2018-03-05 10:48
+       * @param null
+       * @return:
+       */
+      initSearchData(data) {
+        let arr = new Array();
+        for (let i = 0; i < data.length; i++) {
+          arr.push(data[i].name);
+        }
+        return arr;
+      },
+      filterData(data, filter) {
+        let arr = new Array();
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].name == filter) {
+            arr.push(data[i]);
+          }
+        }
+        return arr;
+      }
     },
   };
 </script>
